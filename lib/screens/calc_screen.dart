@@ -16,8 +16,28 @@ class _CalcScreenState extends State<CalcScreen> {
       body: SizedBox(
         height: heightDevice,
         width: widthDevice,
-        child: const Column(
-          children: [],
+        child: Column(
+          children: [
+            Container(
+              width: widthDevice,
+              height: 300.0,
+              padding: const EdgeInsets.all(12.0),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [],
+              ),
+            ),
+            Expanded(
+                child: Container(
+              width: widthDevice,
+              padding: const EdgeInsets.all(12.0),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [],
+              ),
+            ))
+          ],
         ),
       ),
     );
