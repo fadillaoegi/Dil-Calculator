@@ -22,9 +22,11 @@ class _CalcScreenState extends State<CalcScreen> {
               width: widthDevice,
               height: 300.0,
               padding: const EdgeInsets.all(12.0),
+              color: Colors.redAccent,
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
-                children: [],
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [Text("data",)],
               ),
             ),
             Expanded(

@@ -1,4 +1,5 @@
 class RoutesScreen {
   static String root = "/calculator";
-  static String main = "$root/main";
+  static String splash = "$root/splash";
+  static String calculator = "$root/calculator";
 }
