@@ -11,6 +11,8 @@ class AppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: RoutesScreen.calculator,
+      theme: ThemeData(),
+      showSemanticsDebugger: false,
       getPages: [
         GetPage(
           name: RoutesScreen.splash,
