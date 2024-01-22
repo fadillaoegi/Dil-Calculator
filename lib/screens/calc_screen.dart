@@ -58,7 +58,7 @@ class _CalcScreenState extends State<CalcScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BtnPrimary(
+                      BtnAccent(
                         value: "AC",
                         onPress: () {},
                       ),
@@ -70,7 +70,7 @@ class _CalcScreenState extends State<CalcScreen> {
                         value: "%",
                         onPress: () {},
                       ),
-                      BtnPrimary(
+                      BtnAccent(
                         value: "DE",
                         onPress: () {},
                       ),
@@ -91,7 +91,7 @@ class _CalcScreenState extends State<CalcScreen> {
                         value: "9",
                         onPress: () {},
                       ),
-                      BtnPrimary(
+                      BtnAccent(
                         value: "x",
                         onPress: () {},
                       ),
@@ -112,8 +112,8 @@ class _CalcScreenState extends State<CalcScreen> {
                         value: "6",
                         onPress: () {},
                       ),
-                      BtnPrimary(
-                        value: "/",
+                      BtnAccent(
+                        value: "÷",
                         onPress: () {},
                       ),
                     ],
@@ -133,7 +133,7 @@ class _CalcScreenState extends State<CalcScreen> {
                         value: "3",
                         onPress: () {},
                       ),
-                      BtnPrimary(
+                      BtnAccent(
                         value: "+",
                         onPress: () {},
                       ),
@@ -157,7 +157,7 @@ class _CalcScreenState extends State<CalcScreen> {
                         width: 18,
                       ),
                       Expanded(
-                        child: BtnPrimary(
+                        child: BtnAccent(
                           value: "=",
                           onPress: () {},
                         ),
@@ -192,6 +192,32 @@ class BtnPrimary extends StatelessWidget {
           child: Text(
             value!,
             style: fontPrimary400.copyWith(fontSize: 30.0),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BtnAccent extends StatelessWidget {
+  BtnAccent({super.key, this.onPress, this.value});
+  String? value;
+  VoidCallback? onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPress,
+      child: Container(
+        height: 80.0,
+        width: 80.0,
+        decoration: BoxDecoration(
+            color: ColorApps.primary,
+            borderRadius: BorderRadius.circular(10.0)),
+        child: Center(
+          child: Text(
+            value!,
+            style: fontWhite400.copyWith(fontSize: 30.0),
           ),
         ),
       ),

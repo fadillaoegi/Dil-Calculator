@@ -9,6 +9,10 @@ class AppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//     SystemChrome.setPreferredOrientations([
+//   DeviceOrientation.landscapeLeft,
+//   DeviceOrientation.landscapeRight,
+// ]);
     return GetMaterialApp(
       initialRoute: RoutesScreen.calculator,
       theme: ThemeData(),
