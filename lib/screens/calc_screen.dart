@@ -39,10 +39,10 @@ class _CalcScreenState extends State<CalcScreen> {
                   const SizedBox(
                     height: 6.0,
                   ),
-                  Text(
-                    "10",
-                    style: fontSecondary400.copyWith(fontSize: 30.0),
-                  ),
+                  Obx(() => Text(
+                        "10",
+                        style: fontSecondary400.copyWith(fontSize: 30.0),
+                      )),
                 ],
               ),
             ),
@@ -60,18 +60,22 @@ class _CalcScreenState extends State<CalcScreen> {
                     children: [
                       BtnAccent(
                         value: "AC",
+                        operator: "AC",
                         onPress: () {},
                       ),
                       BtnPrimary(
                         value: "%",
+                        operator: "%",
                         onPress: () {},
                       ),
                       BtnPrimary(
-                        value: "%",
+                        value: "",
+                        operator: "",
                         onPress: () {},
                       ),
                       BtnAccent(
                         value: "DE",
+                        operator: "DE",
                         onPress: () {},
                       ),
                     ],
@@ -81,18 +85,22 @@ class _CalcScreenState extends State<CalcScreen> {
                     children: [
                       BtnWhite(
                         value: "7",
+                        operator: "7",
                         onPress: () {},
                       ),
                       BtnWhite(
                         value: "8",
+                        operator: "8",
                         onPress: () {},
                       ),
                       BtnWhite(
                         value: "9",
+                        operator: "9",
                         onPress: () {},
                       ),
                       BtnAccent(
-                        value: "x",
+                        value: "*",
+                        operator: "x",
                         onPress: () {},
                       ),
                     ],
@@ -102,18 +110,22 @@ class _CalcScreenState extends State<CalcScreen> {
                     children: [
                       BtnWhite(
                         value: "4",
+                        operator: "4",
                         onPress: () {},
                       ),
                       BtnWhite(
                         value: "5",
+                        operator: "5",
                         onPress: () {},
                       ),
                       BtnWhite(
                         value: "6",
+                        operator: "6",
                         onPress: () {},
                       ),
                       BtnAccent(
-                        value: "÷",
+                        value: "/",
+                        operator: "÷",
                         onPress: () {},
                       ),
                     ],
@@ -123,18 +135,22 @@ class _CalcScreenState extends State<CalcScreen> {
                     children: [
                       BtnWhite(
                         value: "1",
+                        operator: "1",
                         onPress: () {},
                       ),
                       BtnWhite(
                         value: "2",
+                        operator: "2",
                         onPress: () {},
                       ),
                       BtnWhite(
                         value: "3",
+                        operator: "3",
                         onPress: () {},
                       ),
                       BtnAccent(
                         value: "+",
+                        operator: "+",
                         onPress: () {},
                       ),
                     ],
@@ -144,6 +160,7 @@ class _CalcScreenState extends State<CalcScreen> {
                     children: [
                       BtnWhite(
                         value: "0",
+                        operator: "0",
                         onPress: () {},
                       ),
                       const SizedBox(
@@ -151,6 +168,7 @@ class _CalcScreenState extends State<CalcScreen> {
                       ),
                       BtnWhite(
                         value: ".",
+                        operator: ".",
                         onPress: () {},
                       ),
                       const SizedBox(
@@ -159,6 +177,7 @@ class _CalcScreenState extends State<CalcScreen> {
                       Expanded(
                         child: BtnAccent(
                           value: "=",
+                          operator: "=",
                           onPress: () {},
                         ),
                       ),
@@ -175,8 +194,9 @@ class _CalcScreenState extends State<CalcScreen> {
 }
 
 class BtnPrimary extends StatelessWidget {
-  BtnPrimary({super.key, this.onPress, this.value});
+  BtnPrimary({super.key, this.onPress, this.value, this.operator});
   String? value;
+  String? operator;
   VoidCallback? onPress;
 
   @override
@@ -190,7 +210,7 @@ class BtnPrimary extends StatelessWidget {
             color: ColorApps.bg2, borderRadius: BorderRadius.circular(10.0)),
         child: Center(
           child: Text(
-            value!,
+            operator!,
             style: fontPrimary400.copyWith(fontSize: 30.0),
           ),
         ),
@@ -200,8 +220,9 @@ class BtnPrimary extends StatelessWidget {
 }
 
 class BtnAccent extends StatelessWidget {
-  BtnAccent({super.key, this.onPress, this.value});
+  BtnAccent({super.key, this.onPress, this.value, this.operator});
   String? value;
+  String? operator;
   VoidCallback? onPress;
 
   @override
@@ -216,7 +237,7 @@ class BtnAccent extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0)),
         child: Center(
           child: Text(
-            value!,
+            operator!,
             style: fontWhite400.copyWith(fontSize: 30.0),
           ),
         ),
@@ -226,8 +247,10 @@ class BtnAccent extends StatelessWidget {
 }
 
 class BtnWhite extends StatelessWidget {
-  BtnWhite({super.key, this.onPress, this.value});
+  BtnWhite({super.key, this.onPress, this.value, this.operator});
   String? value;
+  String? operator;
+
   VoidCallback? onPress;
 
   @override
@@ -241,7 +264,7 @@ class BtnWhite extends StatelessWidget {
             color: ColorApps.bg2, borderRadius: BorderRadius.circular(10.0)),
         child: Center(
           child: Text(
-            value!,
+            operator!,
             style: fontWhite400.copyWith(fontSize: 30.0),
           ),
         ),
