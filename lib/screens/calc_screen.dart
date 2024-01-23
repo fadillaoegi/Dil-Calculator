@@ -6,13 +6,8 @@ import 'package:dilcalculator/styles/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CalcScreen extends StatefulWidget {
+class CalcScreen extends StatelessWidget {
   const CalcScreen({super.key});
-  @override
-  State<CalcScreen> createState() => _CalcScreenState();
-}
-
-class _CalcScreenState extends State<CalcScreen> {
   @override
   Widget build(BuildContext context) {
     CalcController controller = Get.put(CalcController());
@@ -28,18 +23,19 @@ class _CalcScreenState extends State<CalcScreen> {
           children: [
             Container(
               width: width,
-              height: 300.0,
-              // height: height / 7,
+              // height: 300.0,
+              height: height / 3,
               padding: const EdgeInsets.all(12.0),
               color: ColorApps.bg,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "2000",
-                    style: fontWhite400.copyWith(fontSize: 60.0),
-                  ),
+                  Obx(() => Text(
+                        // "2000",
+                        "${controller.total}",
+                        style: fontWhite400.copyWith(fontSize: 60.0),
+                      )),
                   const SizedBox(
                     height: 6.0,
                   ),
@@ -179,10 +175,24 @@ class _CalcScreenState extends State<CalcScreen> {
                         width: 18,
                       ),
                       Expanded(
-                        child: BtnAccent(
-                          value: "=",
-                          operator: "=",
-                          // onPress: () {},
+                        child: InkWell(
+                          // onTap: onPress,
+                          onTap: () {
+                            controller.operation();
+                          },
+                          child: Container(
+                            height: 80.0,
+                            width: 80.0,
+                            decoration: BoxDecoration(
+                                color: ColorApps.primary,
+                                borderRadius: BorderRadius.circular(10.0)),
+                            child: Center(
+                              child: Text(
+                                "=",
+                                style: fontWhite400.copyWith(fontSize: 30.0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -244,8 +254,8 @@ class BtnAccent extends StatelessWidget {
         controller.changeText(value.toString());
       },
       child: Container(
-        height: 70.0,
-        width: 70.0,
+        height: 80.0,
+        width: 80.0,
         decoration: BoxDecoration(
             color: ColorApps.primary,
             borderRadius: BorderRadius.circular(10.0)),
