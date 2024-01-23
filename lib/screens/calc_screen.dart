@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:dilcalculator/controllers/calc_controller.dart';
 import 'package:dilcalculator/styles/colors.dart';
 import 'package:dilcalculator/styles/fonts.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:get/get.dart';
 
 class CalcScreen extends StatefulWidget {
   const CalcScreen({super.key});
-
   @override
   State<CalcScreen> createState() => _CalcScreenState();
 }
@@ -15,17 +15,21 @@ class CalcScreen extends StatefulWidget {
 class _CalcScreenState extends State<CalcScreen> {
   @override
   Widget build(BuildContext context) {
+    CalcController controller = Get.put(CalcController());
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       body: SizedBox(
-        // height: MediaQuery.sizeOf(context).height,
-        height: Get.height,
-        // width: MediaQuery.sizeOf(context).width,
-        width: Get.width,
+        height: height,
+        // height: Get.height,
+        width: width,
+        // width: Get.width,
         child: Column(
           children: [
             Container(
-              width: Get.width,
+              width: width,
               height: 300.0,
+              // height: height / 7,
               padding: const EdgeInsets.all(12.0),
               color: ColorApps.bg,
               child: Column(
@@ -40,7 +44,8 @@ class _CalcScreenState extends State<CalcScreen> {
                     height: 6.0,
                   ),
                   Obx(() => Text(
-                        "10",
+                        // "10",
+                        "${controller.text}",
                         style: fontSecondary400.copyWith(fontSize: 30.0),
                       )),
                 ],
@@ -48,7 +53,6 @@ class _CalcScreenState extends State<CalcScreen> {
             ),
             Expanded(
                 child: Container(
-              width: Get.width,
               padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(color: ColorApps.bg),
               child: Column(
@@ -61,22 +65,22 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnAccent(
                         value: "AC",
                         operator: "AC",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnPrimary(
                         value: "%",
                         operator: "%",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnPrimary(
                         value: "",
                         operator: "",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnAccent(
                         value: "DE",
                         operator: "DE",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                     ],
                   ),
@@ -86,7 +90,7 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnWhite(
                         value: "7",
                         operator: "7",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnWhite(
                         value: "8",
@@ -96,12 +100,12 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnWhite(
                         value: "9",
                         operator: "9",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnAccent(
                         value: "*",
                         operator: "x",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                     ],
                   ),
@@ -111,22 +115,22 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnWhite(
                         value: "4",
                         operator: "4",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnWhite(
                         value: "5",
                         operator: "5",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnWhite(
                         value: "6",
                         operator: "6",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnAccent(
                         value: "/",
                         operator: "÷",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                     ],
                   ),
@@ -136,22 +140,22 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnWhite(
                         value: "1",
                         operator: "1",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnWhite(
                         value: "2",
                         operator: "2",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnWhite(
                         value: "3",
                         operator: "3",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       BtnAccent(
                         value: "+",
                         operator: "+",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                     ],
                   ),
@@ -161,7 +165,7 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnWhite(
                         value: "0",
                         operator: "0",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       const SizedBox(
                         width: 18,
@@ -169,7 +173,7 @@ class _CalcScreenState extends State<CalcScreen> {
                       BtnWhite(
                         value: ".",
                         operator: ".",
-                        onPress: () {},
+                        // onPress: () {},
                       ),
                       const SizedBox(
                         width: 18,
@@ -178,7 +182,7 @@ class _CalcScreenState extends State<CalcScreen> {
                         child: BtnAccent(
                           value: "=",
                           operator: "=",
-                          onPress: () {},
+                          // onPress: () {},
                         ),
                       ),
                     ],
@@ -201,8 +205,13 @@ class BtnPrimary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CalcController controller = Get.put(CalcController());
+
     return InkWell(
-      onTap: onPress,
+      // onTap: onPress,
+      onTap: () {
+        controller.changeText(value.toString());
+      },
       child: Container(
         height: 80.0,
         width: 80.0,
@@ -227,11 +236,16 @@ class BtnAccent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CalcController controller = Get.put(CalcController());
+
     return InkWell(
-      onTap: onPress,
+      // onTap: onPress,
+      onTap: () {
+        controller.changeText(value.toString());
+      },
       child: Container(
-        height: 80.0,
-        width: 80.0,
+        height: 70.0,
+        width: 70.0,
         decoration: BoxDecoration(
             color: ColorApps.primary,
             borderRadius: BorderRadius.circular(10.0)),
@@ -255,8 +269,12 @@ class BtnWhite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CalcController controller = Get.put(CalcController());
     return InkWell(
-      onTap: onPress,
+      // onTap: onPress,
+      onTap: () {
+        controller.changeText(value.toString());
+      },
       child: Container(
         height: 80.0,
         width: 80.0,
