@@ -1,6 +1,9 @@
+import 'package:dilcalculator/app/modules/home/controllers/home_controller.dart';
 import 'package:dilcalculator/app/styles/colors.dart';
 import 'package:dilcalculator/app/styles/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
 class BtnAccent extends StatelessWidget {
   const BtnAccent({super.key, this.onPress, this.value, this.operator});
@@ -10,12 +13,12 @@ class BtnAccent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // CalcController controller = Get.put(CalcController());
+    final controller = Get.put(HomeController());
 
     return InkWell(
       // onTap: onPress,
       onTap: () {
-        // controller.changeText(value.toString());
+        controller.changeText(value.toString());
       },
       child: Container(
         height: 80.0,

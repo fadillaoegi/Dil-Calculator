@@ -52,7 +52,7 @@ class HomeView extends GetView<HomeController> {
                       "${controller.text}",
                       // style: fontSecondary400.copyWith(fontSize: 30.0),
                       style: TextStyle(
-                        fontSize: 60.0,
+                        fontSize: 30.0,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -72,8 +72,8 @@ class HomeView extends GetView<HomeController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        BtnAccent(value: "AC", operator: "AC", onPress: () {}),
-                        BtnPrimary(value: "%", operator: "%", onPress: () {}),
+                        BtnAccent(value: "AC", operator: "AC"),
+                        BtnPrimary(value: "%", operator: "%"),
                         BtnPrimary(
                           value: "",
                           operator: "",
