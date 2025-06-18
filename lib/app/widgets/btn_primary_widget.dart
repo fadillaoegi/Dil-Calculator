@@ -25,14 +25,24 @@ class BtnPrimary extends StatelessWidget {
     final controller = Get.put(HomeController());
 
     return InkWell(
-      onTap: () {
-        controller.changeText(value.toString());
-      },
+      onTap:
+          onPress ??
+          () {
+            controller.changeText(value.toString());
+          },
       child: Container(
         height: 80.0,
         width: 80.0,
         decoration: BoxDecoration(
           color: ColorApps.bg2,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(9),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Center(

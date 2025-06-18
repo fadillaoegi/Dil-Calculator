@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import '../controllers/splash_controller.dart';
 import 'package:dilcalculator/app/styles/fonts.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -8,7 +10,7 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     final sizedScreen = MediaQuery.sizeOf(context);
-    controller.splashStart();
+    final _ = Get.find<SplashController>();
     return Scaffold(
       body: SizedBox(
         height: sizedScreen.height,

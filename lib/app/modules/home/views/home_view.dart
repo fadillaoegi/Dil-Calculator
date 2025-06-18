@@ -1,15 +1,14 @@
-import 'package:dilcalculator/app/styles/colors.dart';
+import 'package:flutter/material.dart';
+import '../controllers/home_controller.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:dilcalculator/app/styles/fonts.dart';
+import 'package:dilcalculator/app/styles/colors.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:dilcalculator/app/widgets/btn_white_widget.dart';
 import 'package:dilcalculator/app/widgets/btn_accent_widget.dart';
 import 'package:dilcalculator/app/widgets/btn_primary_widget.dart';
-import 'package:dilcalculator/app/widgets/btn_white_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-
-import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
@@ -30,7 +29,7 @@ class HomeView extends GetView<HomeController> {
               // height: 300.0,
               height: height / 3,
               padding: const EdgeInsets.all(12.0),
-              color: ColorApps.bg,
+              // color: ColorApps.bg,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -39,7 +38,11 @@ class HomeView extends GetView<HomeController> {
                     () => Text(
                       // "2000",
                       "${controller.total}",
-                      style: fontWhite400.copyWith(fontSize: 60.0),
+                      // style: fontWhite400.copyWith(fontSize: 60.0),
+                      style: TextStyle(
+                        fontSize: 60.0,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 6.0),
@@ -47,7 +50,11 @@ class HomeView extends GetView<HomeController> {
                     () => Text(
                       // "10",
                       "${controller.text}",
-                      style: fontSecondary400.copyWith(fontSize: 30.0),
+                      // style: fontSecondary400.copyWith(fontSize: 30.0),
+                      style: TextStyle(
+                        fontSize: 60.0,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ],
@@ -56,7 +63,7 @@ class HomeView extends GetView<HomeController> {
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(20.0),
-                decoration: BoxDecoration(color: ColorApps.bg),
+                // decoration: BoxDecoration(color: ColorApps.bg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
