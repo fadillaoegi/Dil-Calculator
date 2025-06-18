@@ -1,0 +1,2 @@
+/Users/myboo/Project/mobile/Dil-Calculator/android/app/.cxx/Debug/6i666j5p/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/myboo/Project/mobile/Dil-Calculator/android/app/.cxx/Debug/6i666j5p/x86_64/CMakeFiles/edit_cache.dir
