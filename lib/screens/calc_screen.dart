@@ -3,6 +3,8 @@
 import 'package:dilcalculator/controllers/calc_controller.dart';
 import 'package:dilcalculator/styles/colors.dart';
 import 'package:dilcalculator/styles/fonts.dart';
+import 'package:dilcalculator/widgets/btn_primary_widget.dart';
+import 'package:dilcalculator/widgets/btn_white_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,23 +57,30 @@ class CalcScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // NOTE: SECTION 1
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BtnAccent(
                         value: "AC",
                         operator: "AC",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnPrimary(
                         value: "%",
                         operator: "%",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnPrimary(
                         value: "",
                         operator: "",
-                        // onPress: () {},
+                        iconActive: true,
+                        icon: const Icon(Icons.palette_outlined, size: 40.0),
+                        onPress: () {
+                          Get.changeTheme(Get.isDarkMode
+                              ? ThemeData.light()
+                              : ThemeData.dark());
+                        },
                       ),
                       BtnAccent(
                         value: "DE",
@@ -80,13 +89,15 @@ class CalcScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+
+                  // NOTE: SECTION 2
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BtnWhite(
                         value: "7",
                         operator: "7",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnWhite(
                         value: "8",
@@ -96,72 +107,78 @@ class CalcScreen extends StatelessWidget {
                       BtnWhite(
                         value: "9",
                         operator: "9",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnAccent(
                         value: "*",
                         operator: "x",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                     ],
                   ),
+
+                  // NOTE: SECTION 3
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BtnWhite(
                         value: "4",
                         operator: "4",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnWhite(
                         value: "5",
                         operator: "5",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnWhite(
                         value: "6",
                         operator: "6",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnAccent(
                         value: "/",
                         operator: "÷",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                     ],
                   ),
+
+                  // NOTE: SECTION 4
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BtnWhite(
                         value: "1",
                         operator: "1",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnWhite(
                         value: "2",
                         operator: "2",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnWhite(
                         value: "3",
                         operator: "3",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       BtnAccent(
                         value: "+",
                         operator: "+",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                     ],
                   ),
+
+                  // NOTE: SECTION 5
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       BtnWhite(
                         value: "0",
                         operator: "0",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       const SizedBox(
                         width: 18,
@@ -169,7 +186,7 @@ class CalcScreen extends StatelessWidget {
                       BtnWhite(
                         value: ".",
                         operator: ".",
-                        // onPress: () {},
+                        onPress: () {},
                       ),
                       const SizedBox(
                         width: 18,
@@ -207,37 +224,6 @@ class CalcScreen extends StatelessWidget {
   }
 }
 
-class BtnPrimary extends StatelessWidget {
-  BtnPrimary({super.key, this.onPress, this.value, this.operator});
-  String? value;
-  String? operator;
-  VoidCallback? onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    CalcController controller = Get.put(CalcController());
-
-    return InkWell(
-      // onTap: onPress,
-      onTap: () {
-        controller.changeText(value.toString());
-      },
-      child: Container(
-        height: 80.0,
-        width: 80.0,
-        decoration: BoxDecoration(
-            color: ColorApps.bg2, borderRadius: BorderRadius.circular(10.0)),
-        child: Center(
-          child: Text(
-            operator!,
-            style: fontPrimary400.copyWith(fontSize: 30.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class BtnAccent extends StatelessWidget {
   BtnAccent({super.key, this.onPress, this.value, this.operator});
   String? value;
@@ -259,37 +245,6 @@ class BtnAccent extends StatelessWidget {
         decoration: BoxDecoration(
             color: ColorApps.primary,
             borderRadius: BorderRadius.circular(10.0)),
-        child: Center(
-          child: Text(
-            operator!,
-            style: fontWhite400.copyWith(fontSize: 30.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class BtnWhite extends StatelessWidget {
-  BtnWhite({super.key, this.onPress, this.value, this.operator});
-  String? value;
-  String? operator;
-
-  VoidCallback? onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    CalcController controller = Get.put(CalcController());
-    return InkWell(
-      // onTap: onPress,
-      onTap: () {
-        controller.changeText(value.toString());
-      },
-      child: Container(
-        height: 80.0,
-        width: 80.0,
-        decoration: BoxDecoration(
-            color: ColorApps.bg2, borderRadius: BorderRadius.circular(10.0)),
         child: Center(
           child: Text(
             operator!,

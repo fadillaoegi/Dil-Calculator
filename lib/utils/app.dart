@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:dilcalculator/routes/routes.dart';
 import 'package:dilcalculator/screens/calc_screen.dart';
 import 'package:dilcalculator/screens/splash_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 class AppScreen extends StatelessWidget {
   const AppScreen({super.key});
@@ -14,7 +15,8 @@ class AppScreen extends StatelessWidget {
 //   DeviceOrientation.landscapeRight,
 // ]);
     return GetMaterialApp(
-      initialRoute: RoutesScreen.calculator,
+      initialRoute: RoutesScreen.splash,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       showSemanticsDebugger: false,
       getPages: [

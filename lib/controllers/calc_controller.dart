@@ -1,7 +1,5 @@
-// ignore_for_file: avoid_print
-
-import 'package:function_tree/function_tree.dart';
 import 'package:get/get.dart';
+import 'package:function_tree/function_tree.dart';
 
 class CalcController extends GetxController {
   var text = "0".obs;
@@ -26,7 +24,7 @@ class CalcController extends GetxController {
 
   void operation() {
     // print("Ditekan ${text.value}");
-    print("${text.value.interpret()}");
+    // print("${text.value.interpret()}");
     total.value = "${text.value.interpret()}";
   }
 }

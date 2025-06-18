@@ -1,6 +1,7 @@
-import 'package:dilcalculator/styles/colors.dart';
 import 'package:flutter/material.dart';
-
+// import 'package:google_fonts/google_fonts.dart';
+import 'package:dilcalculator/styles/colors.dart';
+// final black400 = GoogleFonts.poppins(color: ColorApps.bg);
 TextStyle fontPrimary400 =
     TextStyle(color: ColorApps.primary, fontWeight: FontWeight.w400);
 TextStyle fontSecondary400 =
